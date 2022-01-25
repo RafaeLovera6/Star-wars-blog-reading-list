@@ -1,0 +1,43 @@
+*{
+    box-sizing: border-box;
+    }
+.title{
+    color: red;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+.cards {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+.card{
+    width: 400px;
+    display: inline-block;
+}
+/* .test{
+    background-color: rgb(216, 216, 216);
+    text-align: center;
+    justify-content: space-between; */
+/* } */
+.borde{
+    margin-left: 80px;
+    margin-right: 80px;
+}
+/* .test2{
+    background-color: blue;
+    color: white;
+    text-align: center;
+    justify-content: space-between;
+} */
+
+.navbar {
+  justify-content: space-around;
+}
+
+.footer-card {
+  display: flex;
+  justify-content: space-between;
+}
