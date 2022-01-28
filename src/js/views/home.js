@@ -1,23 +1,22 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
-import Card from "../component/Card.jsx";
+import Card from "../component/Card.js";
 import { Context } from "../store/appContext";
 
-const carta = <Card />;
-export const Home = () => {
-  const { store, actions } = useContext(Context);
-  return (
-    <>
-      <br></br>
-      <h2 className="title my-5">Characters</h2>
-      <div className="cards">
-        {store.characters.map(c => <Card data={c}/> )}
-      </div>
-      <h2 className="title my-5">Planets</h2>
-      <div className="cards">
-        <Card />
-      </div>
-    </>
-  );
-};
+export const Home = (props) => {
+	const { store, actions} = useContext(Context);
+	console.log("these are the favorites", store.favorites)
+	return <>
+		<p className="font-weight-bold display-4 ">Characters</p>
+		<div className="horizontalScroll my-4">
+			{store.characters.map((c)=><Card entity={c} isFavorite={store.favorites.find(fav => fav.name === c.name)}/>)}
+		</div>
+
+
+		<p className="font-weight-bold display-4 text-left">Planets</p>
+		<div className="horizontalScroll my-4">
+			{store.planets.map(p => <Card entity={p} isFavorite={store.favorites.find(fav => fav.name === p.name)} />)}
+		</div>
+	</>
+}
