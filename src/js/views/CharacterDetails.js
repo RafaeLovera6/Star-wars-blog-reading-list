@@ -33,3 +33,5 @@ import "../../styles/demo.css";
 };
 
 export default CharacterDetails;
+
+

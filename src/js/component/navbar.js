@@ -1,23 +1,42 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const Navbar = () => {
-	const { store, actions } = useContext(Context);
-	return (
-		<nav className="navbar navbar-light bg-light justify-content-around">
-<a className="navbar-brand"><i class="fab fa-jedi-order fa-lg"></i></a>
-<form className="form-inline">
-<div class="dropdown">
-  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    Favorites
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    {store.favorites.map(f => <li><a class="dropdown-item" href="#">{f.name}</a></li>)}
-    
-  </ul>
-</div>
-</form>
-</nav>
-	);
+export const Navbar = (props) => {
+    const { store, actions } = useContext(Context);
+	
+    return (
+        <nav className="navbar navbar-light bg-light mb-3">
+            <Link to="/">
+                <span className="navbar-brand mx-3 h1">LOGO</span>
+            </Link>
+            <div className="dropdown">
+                <button
+                    className="btn btn-primary dropdown-toggle mx-5"
+                    type="button"
+                    id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                >
+                    Favorites {store.favorites.length}
+                </button>
+                <ul
+                    className="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton1"
+                >
+                    {store.favorites.map((f) => (
+                        <li>
+                            <a className="dropdown-item" href="#">
+                                {f.name}
+                            </a>
+                            <i
+                                onClick={() => actions.deleteFavorite(f)}
+                                className="fas fa-trash"
+                            ></i>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </nav>
+    );
 };
